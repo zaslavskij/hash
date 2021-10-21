@@ -27,6 +27,16 @@ module.exports = class HashTable {
 		this.hash[index2save] = n;
 		return this;
 	}
+
+	delete(z) {
+		if (!this.has(z)) throw new Error("Unknown value!");
+		const hashKey = createHashKey(z);
+		const index2save = hashKey % this.hash.length;
+
+		this.hash[index2save] = null;
+
+		return this;
+	}
 };
 
 module.exports.createHashKey = createHashKey;
